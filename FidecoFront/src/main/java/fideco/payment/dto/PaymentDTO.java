@@ -1,10 +1,10 @@
 package fideco.payment.dto;
 
 public class PaymentDTO {
-	public String payment_id;
-	public int payment_amount;
-	public String payment_date;
-	public String payment_method;
+	public String payment_id; //결제 아이디
+	public int payment_amount; // 결제 금액
+	public String payment_date; //결제 일자
+	public String payment_method; // 결제 수단
 
 	public String getPayment_id() {
 		return payment_id;

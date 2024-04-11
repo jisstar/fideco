@@ -8,7 +8,7 @@
 </head>
 <body>
 <script type="text/javascript">
-location.href="";
+location.href="./NoticeSelectAll.nt";
 </script>
 </body>
 </html>

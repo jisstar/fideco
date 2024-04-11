@@ -9,6 +9,8 @@ import javax.servlet.ServletException;
 import javax.servlet.ServletRequest;
 import javax.servlet.ServletResponse;
 
+// 인코딩을 위한 필터 설정
+
 public class CharacterEncodingFilter implements Filter {
 	FilterConfig config;
 
