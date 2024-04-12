@@ -16,34 +16,32 @@ public class NoticeUpdateViewController implements Controller {
 
 	@Override
 	public FidecoHandlerAdapter execute(HttpServletRequest request, HttpServletResponse response) {
-		log.info("---!---2-2-1--2-42--1");
+		log.info("-33-");
+		int notice_num = Integer.parseInt(request.getParameter("notice_num"));
+		log.info("notice_num : " + notice_num);
 		String notice_title = request.getParameter("notice_title");
-		log.info("notice_title:" + notice_title);
+		log.info(notice_title);
 		String notice_content = request.getParameter("notice_content");
-		log.info("notice_content:" + notice_content);
+		log.info(notice_content);
 		String notice_writer = request.getParameter("notice_writer");
-		log.info("notice_writer:" + notice_writer);
-		int notice_hit = Integer.parseInt(request.getParameter("notice_hit"));
-		log.info("notice_hit:" + notice_hit);
+		log.info(notice_writer);
+		
 
 		NoticeDAO noticeDAO = new NoticeDAO();
 		NoticeDTO noticeDTO = new NoticeDTO();
 
+		noticeDTO.setNotice_num(notice_num);
 		noticeDTO.setNotice_title(notice_title);
 		noticeDTO.setNotice_content(notice_content);
 		noticeDTO.setNotice_writer(notice_writer);
-		noticeDTO.setNotice_hit(notice_hit);
-	
 
 		noticeDTO = noticeDAO.noticeUpdate(noticeDTO);
 		log.info(noticeDTO);
 
 		request.setAttribute("noticeDTO", noticeDTO);
 		FidecoHandlerAdapter fidecoHandlerAdapter = new FidecoHandlerAdapter();
-
 		fidecoHandlerAdapter.setPath("/WEB-INF/view/notice/notice_update_view.jsp");
-
-		return null;
+		return fidecoHandlerAdapter;
 	}
 
 }

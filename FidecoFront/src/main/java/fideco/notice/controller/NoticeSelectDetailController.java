@@ -21,6 +21,8 @@ public class NoticeSelectDetailController implements Controller{
 		NoticeDTO noticeDTO = new NoticeDTO();
 		
 		noticeDTO = noticeDAO.noticeSelect(notice_num);
+		noticeDTO.setNotice_hit(noticeDTO.getNotice_hit() + 1);
+        noticeDAO.noticeUpdate(noticeDTO);
 		log.info(noticeDTO);
 		
 		request.setAttribute("noticeDTO", noticeDTO);

@@ -26,15 +26,11 @@
 				<td><input type="text" name="notice_writer"></td>
 			</tr>
 
-			<tr>
-				<td>조회수 :</td>
-				<td><input type="text" name="notice_hit"></td>
-			</tr>
 
 
 		</table>
-		<button type="submit">등록</button>
-		<button type="reset">취소</button>
+		<button type="submit">공지 등록</button>
+		<button type="reset" onclick="location.href='./NoticeSelectAll.nt'">등록 취소</button>
 	</form>
 
 </body>

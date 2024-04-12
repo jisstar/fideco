@@ -5,6 +5,94 @@
 <head>
 <meta charset="UTF-8">
 <title>공지사항 상세 조회</title>
+ <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f5f5f5;
+            margin: 0;
+            padding: 20px;
+        }
+
+        h5 {
+            color: #333;
+            text-align: center;
+            margin-bottom: 24px;
+            font-size: 24px;
+        }
+
+        .card-body {
+            background-color: #ffffff;
+            padding: 24px;
+            border-radius: 12px;
+            box-shadow: 0 4px 8px rgba(0,0,0,0.05);
+            max-width: 800px;
+            margin: auto;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-bottom: 20px;
+        }
+
+        th, td {
+            padding: 12px;
+            border-bottom: 1px solid #ddd;
+            text-align: left;
+        }
+
+        th {
+            background-color: #f2f2f2;
+            color: #333;
+        }
+
+        tr:nth-child(even) {
+            background-color: #f9f9f9;
+        }
+
+        .btn {
+            display: inline-block;
+            padding: 10px 20px;
+            background-color: #007bff;
+            color: #fff;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            text-decoration: none;
+            transition: background-color 0.3s;
+        }
+
+        .btn:hover {
+            background-color: #0056b3;
+        }
+
+        .btn-primary {
+            background-color: #007bff;
+        }
+
+        .btn-warning {
+            background-color: #ffc107;
+        }
+
+        .btn-danger {
+            background-color: #dc3545;
+        }
+
+        .btn-block {
+            width: 100%;
+        }
+
+        .row {
+            display: flex;
+            justify-content: space-between;
+            margin-top: 20px;
+        }
+
+        .col-md-4 {
+            flex-basis: calc(33.333% - 20px);
+            max-width: calc(33.333% - 20px);
+        }
+    </style>
 </head>
 <body>
 	<h5>공지사항 상세 조회</h5>
@@ -36,7 +124,7 @@
 				<a href="./NoticeSelectAll.nt" class="btn btn-primary btn-block"> 공지사항 전체 조회 </a>
 			</div>
 			<div class="col-md-4">
-				<a href="./NoticeUpdateView.nt?notice_num=${noticeDTO.notice_num}"
+				<a href="./NoticeUpdate.nt?notice_num=${noticeDTO.notice_num}"
 					class="btn btn-warning btn-block"> 공지사항 수정 </a>
 			</div>
 			<div class="col-md-4">

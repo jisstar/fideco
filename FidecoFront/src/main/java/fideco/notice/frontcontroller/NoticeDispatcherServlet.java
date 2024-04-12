@@ -21,6 +21,7 @@ import fideco.notice.controller.NoticeSelectDetailController;
 import fideco.notice.controller.NoticeUpdateController;
 import fideco.notice.controller.NoticeUpdateViewController;
 
+
 @WebServlet("/NoticeDispatcherServlet")
 public class NoticeDispatcherServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
@@ -58,20 +59,20 @@ public class NoticeDispatcherServlet extends HttpServlet {
 			fidecoHandlerAdapter = controller.execute(request, response);
 			log.info("공지사항 상세 조회 확인 - " + fidecoHandlerAdapter);
 			
-		} else if (pathURL.equals("/NoticeUpdateView.nt")) {
-			controller = new NoticeUpdateViewController();
-			fidecoHandlerAdapter = controller.execute(request, response);
-			log.info("공지사항 수정 화면 뷰 확인 - " + fidecoHandlerAdapter);
-			
 		} else if (pathURL.equals("/NoticeUpdate.nt")) {
 			controller = new NoticeUpdateController();
 			fidecoHandlerAdapter = controller.execute(request, response);
 			log.info("공지사항 수정 확인 - " + fidecoHandlerAdapter);
-			
-		} else if (pathURL.equals("/NoticeDeleteView.nt")) {
-			fidecoHandlerAdapter = new FidecoHandlerAdapter();
-			fidecoHandlerAdapter.setPath("/WEB-INF/view/notice/notice_delete_view.jsp");
-			log.info("공지사항 삭제 화면 뷰 확인 - " + fidecoHandlerAdapter);
+
+		} else if (pathURL.equals("/NoticeUpdateView.nt")) {
+			controller = new NoticeUpdateViewController();
+			fidecoHandlerAdapter = controller.execute(request, response);
+			log.info("공지사항 수정 화면 뷰 확인 - " + fidecoHandlerAdapter);
+
+		}else if (pathURL.equals("/NoticeDeleteView.nt")) {
+				fidecoHandlerAdapter = new FidecoHandlerAdapter();
+				fidecoHandlerAdapter.setPath("/WEB-INF/view/notice/notice_delete.jsp");
+				log.info("공지사항 삭제 화면 뷰 확인 - " + fidecoHandlerAdapter);
 			
 		} else if (pathURL.equals("/NoticeDelete.nt")) {
 			controller = new NoticeDeleteController();

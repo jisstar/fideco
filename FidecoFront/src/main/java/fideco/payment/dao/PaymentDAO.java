@@ -80,13 +80,13 @@ public class PaymentDAO implements PaymentService {
 			preparedStatement = connection.prepareStatement(sql);
 			preparedStatement.setString(1, payment_id);
 			resultSet = preparedStatement.executeQuery();
-			log.info("리절트 셋 : "+resultSet);
+			log.info("리절트 셋 : " + resultSet);
 			while (resultSet.next()) {
 				paymentDTO.setPayment_id(resultSet.getString("payment_id"));
 				paymentDTO.setPayment_amount(resultSet.getInt("payment_amount"));
 				paymentDTO.setPayment_date(resultSet.getString("payment_date"));
 				paymentDTO.setPayment_method(resultSet.getString("payment_method"));
-				log.info("페이먼트디티오 : "+paymentDTO);
+				log.info("페이먼트디티오 : " + paymentDTO);
 			}
 		} catch (Exception e) {
 			log.info("특정 결제 정보 조회 실패 - " + e);
@@ -148,18 +148,23 @@ public class PaymentDAO implements PaymentService {
 			Context context = new InitialContext();
 			DataSource dataSource = (DataSource) context.lookup("java:comp/env/jdbc");
 			connection = dataSource.getConnection();
-			String sql = "update payment set payment_amount = ?, payment_date = ?, payment_method = ?";
-			sql += " where payment_id = ?";
-			log.info("update sql문 확인 = " + sql);
-
+			String sql = "update payment set payment_amount=?, payment_date=?, payment_method=?";
+			sql += " where payment_id=?";
+			log.info("sql문 확인 - " + sql);
 			preparedStatement = connection.prepareStatement(sql);
-			preparedStatement.setString(1, paymentDTO.getPayment_id());
-			preparedStatement.setInt(2, paymentDTO.getPayment_amount());
-			preparedStatement.setString(3, paymentDTO.getPayment_date());
-			preparedStatement.setString(4, paymentDTO.getPayment_method());
+			preparedStatement.setInt(1, paymentDTO.getPayment_amount());
+			log.info("---1----");
+			preparedStatement.setString(2, paymentDTO.getPayment_date());
+			log.info("---2----");
+			preparedStatement.setString(3, paymentDTO.getPayment_method());
+			log.info("---3----");
+			preparedStatement.setString(4, paymentDTO.getPayment_id());
+			log.info("---4----");
 
 			int count = preparedStatement.executeUpdate();
+			log.info("count:"+count);
 			if (count > 0) {
+				connection.setAutoCommit(false);
 				connection.commit();
 				log.info("커밋되었습니다.");
 			} else {
@@ -167,7 +172,7 @@ public class PaymentDAO implements PaymentService {
 				log.info("롤백되었습니다.");
 			}
 		} catch (Exception e) {
-			log.info("결제 정보 수정 실패 - " + e);
+			log.info("결제 수정 실패 - " + e);
 		} finally {
 			try {
 				preparedStatement.close();
@@ -176,10 +181,11 @@ public class PaymentDAO implements PaymentService {
 				e.printStackTrace();
 			}
 		}
+
 		return paymentDTO;
 
 	}
- 
+
 	@Override
 	public PaymentDTO paymentDelete(String payment_id) {
 		Connection connection = null;
@@ -194,7 +200,6 @@ public class PaymentDAO implements PaymentService {
 
 			preparedStatement = connection.prepareStatement(sql);
 			preparedStatement.setString(1, payment_id);
-			
 
 			int count = preparedStatement.executeUpdate();
 			if (count > 0) {

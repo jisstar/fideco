@@ -7,8 +7,7 @@
 <title>메인 페이지</title>
 </head>
 <body>
-<script type="text/javascript">
-location.href="./NoticeSelectAll.nt";
-</script>
+<a href="./NoticeSelectAll.nt">공지사항</a>
+<a href="./PaymentSelectAll.py">결제</a>
 </body>
 </html>

@@ -13,12 +13,12 @@
 		<form action="./NoticeDelete.nt" method="post" id="sign_dept">
 			<fieldset>
 				<div class="form-group row">
-					<label for="noticeid" class="ml-sm-3 col-form-label"> 공지사항 번호 </label>
+					<label for="notice_num" class="ml-sm-3 col-form-label"> 공지사항 번호 </label>
 					<div class="ml-sm-3">
 
-						<input type="text" name="notice_id" id="notice_id"
+						<input type="text" name="notice_num" id="notice_num"
 							class="form-control form-control-sm bg-white"
-							value="${param.notice_id}" readonly>
+							value="${param.notice_num}" readonly>
 					</div>
 				</div>
 				<div class="form-group">
@@ -36,10 +36,7 @@
 				<a href="./NoticeInsertView.nt" class="btn btn-success btn-block">
 					공지사항 입력 </a>
 			</div>
-			<div class="col-md-4">
-				<a href="./NoticeUpdateView.nt?notice_id=${param.notice_id}"
-					class="btn btn-warning btn-block"> 공지사항 수정 </a>
-			</div>
+			
 		</div>
 	</div>
 

@@ -26,7 +26,7 @@
             
             <div class="form-group"> 
 			<button type="submit" class="btn btn-secondary"> 결제 등록 </button>
- 			<button type="reset" class="btn btn-secondary"> 결제 취소 </button>
+ 			<button type="reset" class="btn btn-secondary" onclick="location.href='./PaymentSelectAll.py'"> 결제 취소 </button>
  			</div>
 </form>
 

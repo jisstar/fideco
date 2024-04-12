@@ -36,10 +36,7 @@
 				<a href="./PaymentInsertView.py" class="btn btn-success btn-block">
 					결제 정보 입력 </a>
 			</div>
-			<div class="col-md-4">
-				<a href="./PaymentUpdateView.py?payment_id=${param.payment_id}"
-					class="btn btn-warning btn-block"> 결제 정보 수정 </a>
-			</div>
+			
 		</div>
 	</div>
 

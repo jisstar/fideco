@@ -126,7 +126,7 @@ public class NoticeDAO implements NoticeService {
 			preparedStatement.setString(1, noticeDTO.getNotice_title());
 			preparedStatement.setString(2, noticeDTO.getNotice_content());
 			preparedStatement.setString(3, noticeDTO.getNotice_writer());
-			preparedStatement.setInt(4, noticeDTO.getNotice_hit());
+			preparedStatement.setInt(4, 0);
 
 			int count = preparedStatement.executeUpdate();
 			if (count > 0) {
@@ -157,7 +157,7 @@ public class NoticeDAO implements NoticeService {
 			Context context = new InitialContext();
 			DataSource dataSource = (DataSource) context.lookup("java:comp/env/jdbc");
 			connection = dataSource.getConnection();
-			String sql = "update notice set notice_num = notice_seq.nextval, notice_title = ?, notice_content = ?, notice_writer = ?, notice_registday= sysdate , notice_hit= ? ";
+			String sql = "update notice set notice_title = ?, notice_content = ?, notice_writer = ?, notice_hit= ? ";
 			sql += " where notice_num = ?";
 			log.info("update sql문 확인 = " + sql);
 
@@ -169,6 +169,7 @@ public class NoticeDAO implements NoticeService {
 			preparedStatement.setInt(5, noticeDTO.getNotice_num());
 
 			int count = preparedStatement.executeUpdate();
+			log.info("count : "+count);
 			if (count > 0) {
 				connection.commit();
 				log.info("커밋되었습니다.");

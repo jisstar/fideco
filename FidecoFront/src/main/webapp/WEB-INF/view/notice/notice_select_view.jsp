@@ -6,22 +6,7 @@
 <head>
 <meta charset="UTF-8">
 <title>공지사항 전체 조회</title>
-<style>
-table {
-	width: 100%;
-	border-collapse: collapse;
-}
 
-th, td {
-	padding: 8px;
-	border: 1px solid #dddddd;
-	text-align: left;
-}
-
-th {
-	background-color: #f2f2f2;
-}
-</style>
 </head>
 <body>
 	<h4>공지사항 전체 목록</h4>
@@ -29,7 +14,6 @@ th {
 		<tr>
 			<th>NO.</th>
 			<th>제목</th>
-			<th>내용</th>
 			<th>작성자</th>
 			<th>작성일</th>
 			<th>조회수</th>
@@ -38,12 +22,11 @@ th {
 		<c:forEach var="arrayList" items="${arrayList}">
 			<tr>
 				<td>${arrayList.notice_num}</td>
-				<td>${arrayList.notice_title}</td>
-				<td>${arrayList.notice_content}</td>
+				<td><a href="./NoticeSelectDetail.nt?notice_num=${arrayList.notice_num}">${arrayList.notice_title}</a></td>
 				<td>${arrayList.notice_writer}</td>
 				<td>${arrayList.notice_registday}</td>
 				<td>${arrayList.notice_hit}</td>
-				<button type="button" onclick="location.href='./NoticeSelectDetail.nt?notice_num=${arrayList.notice_num}'">공지사항 상세 보기</button>
+				
 			</tr>
 			
 		</c:forEach>
