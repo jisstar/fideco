@@ -1,7 +1,7 @@
 package fideco.handler;
 
 // 컨트롤러의 요청을 처리 후 이동할 페이지 경로와 전송 방식(redirect/forward) 설정.
-public class FidecoHandlerAdapter {
+public class HandlerAdapter {
 	private boolean redirect = false; 
 	private String path = null; 
 

@@ -7,14 +7,14 @@ import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
 
 import fideco.control.Controller;
-import fideco.handler.FidecoHandlerAdapter;
+import fideco.handler.HandlerAdapter;
 import fideco.payment.dao.PaymentDAO;
 import fideco.payment.dto.PaymentDTO;
 
 public class PaymentSelectDetailController implements Controller{
 	 private static Log log = LogFactory.getLog(PaymentSelectDetailController.class);
 	@Override
-	public FidecoHandlerAdapter execute(HttpServletRequest request, HttpServletResponse response) {
+	public HandlerAdapter execute(HttpServletRequest request, HttpServletResponse response) {
 		String payment_id = request.getParameter("payment_id");
 		log.info("payment_id - "+payment_id);
 		PaymentDAO paymentDAO = new PaymentDAO();
@@ -24,12 +24,12 @@ public class PaymentSelectDetailController implements Controller{
 		log.info(paymentDTO);
 		
 		request.setAttribute("paymentDTO", paymentDTO);
-		FidecoHandlerAdapter fidecoHandlerAdapter = new FidecoHandlerAdapter();
+		HandlerAdapter HandlerAdapter = new HandlerAdapter();
 		log.info("결제 정보 상세 조회");
 		
-		fidecoHandlerAdapter.setPath("/WEB-INF/view/payment/payment_select_detail_view.jsp");
+		HandlerAdapter.setPath("/WEB-INF/view/payment/payment_select_detail_view.jsp");
 		
-		return fidecoHandlerAdapter;
+		return HandlerAdapter;
 	}
 	
 }

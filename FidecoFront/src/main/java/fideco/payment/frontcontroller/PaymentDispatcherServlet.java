@@ -13,7 +13,7 @@ import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
 
 import fideco.control.Controller;
-import fideco.handler.FidecoHandlerAdapter;
+import fideco.handler.HandlerAdapter;
 import fideco.payment.controller.PaymentDeleteController;
 import fideco.payment.controller.PaymentInsertController;
 import fideco.payment.controller.PaymentSelectController;
@@ -33,57 +33,57 @@ public class PaymentDispatcherServlet extends HttpServlet {
 		String contextPath = request.getContextPath();
 		String pathURL = requestURI.substring(contextPath.length());
 
-		FidecoHandlerAdapter fidecoHandlerAdapter = null; // 객체 처리 후 모델과 뷰에 반환
+		HandlerAdapter HandlerAdapter = null; // 객체 처리 후 모델과 뷰에 반환
 		Controller controller = null; // 공통 기능 서블릿 메소드 설정
 
 		// 결제 정보 등록할 뷰의 매핑명 설정
 		if (pathURL.equals("/PaymentInsertView.py")) {
-			fidecoHandlerAdapter = new FidecoHandlerAdapter();
-			fidecoHandlerAdapter.setPath("/WEB-INF/view/payment/payment_insert_view.jsp");
-			log.info("결제 정보 등록 화면 뷰 확인 - " + fidecoHandlerAdapter);
+			HandlerAdapter = new HandlerAdapter();
+			HandlerAdapter.setPath("/WEB-INF/view/payment/payment_insert_view.jsp");
+			log.info("결제 정보 등록 화면 뷰 확인 - " + HandlerAdapter);
 		}
 		// 결제 정보 등록 매핑명 설정
 		else if (pathURL.equals("/PaymentInsert.py")) {
 			controller = new PaymentInsertController();
-			fidecoHandlerAdapter = controller.execute(request, response);
-			log.info("결제 정보 등록 확인 - " + fidecoHandlerAdapter);
+			HandlerAdapter = controller.execute(request, response);
+			log.info("결제 정보 등록 확인 - " + HandlerAdapter);
 
 		} else if (pathURL.equals("/PaymentSelectAll.py")) {
 			controller = new PaymentSelectController();
-			fidecoHandlerAdapter = controller.execute(request, response);
-			log.info("결제 정보 전체 조회 확인 - " + fidecoHandlerAdapter);
+			HandlerAdapter = controller.execute(request, response);
+			log.info("결제 정보 전체 조회 확인 - " + HandlerAdapter);
 
 		} else if (pathURL.equals("/PaymentSelectDetail.py")) {
 			controller = new PaymentSelectDetailController();
-			fidecoHandlerAdapter = controller.execute(request, response);
-			log.info("결제 정보 상세 조회 확인 - " + fidecoHandlerAdapter);
+			HandlerAdapter = controller.execute(request, response);
+			log.info("결제 정보 상세 조회 확인 - " + HandlerAdapter);
 
 		} else if (pathURL.equals("/PaymentUpdate.py")) {
 			controller = new PaymentUpdateController();
-			fidecoHandlerAdapter = controller.execute(request, response);
-			log.info("결제 정보 수정 확인 - " + fidecoHandlerAdapter);
+			HandlerAdapter = controller.execute(request, response);
+			log.info("결제 정보 수정 확인 - " + HandlerAdapter);
 
 		} else if (pathURL.equals("/PaymentUpdateView.py")) {
 			controller = new PaymentUpdateViewController();
-			fidecoHandlerAdapter = controller.execute(request, response);
-			log.info("결제 정보 수정 화면 뷰 확인 - " + fidecoHandlerAdapter);
+			HandlerAdapter = controller.execute(request, response);
+			log.info("결제 정보 수정 화면 뷰 확인 - " + HandlerAdapter);
 
 		}else if (pathURL.equals("/PaymentDeleteView.py")) {
-				fidecoHandlerAdapter = new FidecoHandlerAdapter();
-				fidecoHandlerAdapter.setPath("/WEB-INF/view/payment/payment_delete.jsp");
-				log.info("결제 정보 삭제 화면 뷰 확인 - " + fidecoHandlerAdapter);
+				HandlerAdapter = new HandlerAdapter();
+				HandlerAdapter.setPath("/WEB-INF/view/payment/payment_delete.jsp");
+				log.info("결제 정보 삭제 화면 뷰 확인 - " + HandlerAdapter);
 			
 		} else if (pathURL.equals("/PaymentDelete.py")) {
 			controller = new PaymentDeleteController();
-			fidecoHandlerAdapter = controller.execute(request, response);
-			log.info("결제 정보 삭제 확인 - " + fidecoHandlerAdapter);
+			HandlerAdapter = controller.execute(request, response);
+			log.info("결제 정보 삭제 확인 - " + HandlerAdapter);
 		}
 
-		if (fidecoHandlerAdapter != null) {
-			if (fidecoHandlerAdapter.isRedirect()) {
-				response.sendRedirect(fidecoHandlerAdapter.getPath());
+		if (HandlerAdapter != null) {
+			if (HandlerAdapter.isRedirect()) {
+				response.sendRedirect(HandlerAdapter.getPath());
 			} else {
-				RequestDispatcher dispatcher = request.getRequestDispatcher(fidecoHandlerAdapter.getPath());
+				RequestDispatcher dispatcher = request.getRequestDispatcher(HandlerAdapter.getPath());
 				dispatcher.forward(request, response);
 			}
 		}

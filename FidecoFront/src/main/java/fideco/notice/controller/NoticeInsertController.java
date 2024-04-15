@@ -9,7 +9,7 @@ import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
 
 import fideco.control.Controller;
-import fideco.handler.FidecoHandlerAdapter;
+import fideco.handler.HandlerAdapter;
 import fideco.notice.dao.NoticeDAO;
 import fideco.notice.dto.NoticeDTO;
 
@@ -17,7 +17,7 @@ public class NoticeInsertController implements Controller{
 	private static Log log = LogFactory.getLog(NoticeInsertController.class);
 	
 	@Override
-	public FidecoHandlerAdapter execute(HttpServletRequest request, HttpServletResponse response) {
+	public HandlerAdapter execute(HttpServletRequest request, HttpServletResponse response) {
 		
 		String notice_title = request.getParameter("notice_title");
 		log.info("notice_title:"+notice_title);
@@ -47,9 +47,9 @@ public class NoticeInsertController implements Controller{
 		request.setAttribute("noticeDTO", noticeDTO);
 		log.info("공지사항 등록");
 		
-		FidecoHandlerAdapter fidecoHandlerAdapter = new FidecoHandlerAdapter();
-		fidecoHandlerAdapter.setPath("/WEB-INF/view/notice/notice_insert.jsp");
-		return fidecoHandlerAdapter;
+		HandlerAdapter HandlerAdapter = new HandlerAdapter();
+		HandlerAdapter.setPath("/WEB-INF/view/notice/notice_insert.jsp");
+		return HandlerAdapter;
 		
 		
 	}

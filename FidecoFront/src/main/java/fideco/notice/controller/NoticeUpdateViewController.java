@@ -7,7 +7,7 @@ import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
 
 import fideco.control.Controller;
-import fideco.handler.FidecoHandlerAdapter;
+import fideco.handler.HandlerAdapter;
 import fideco.notice.dao.NoticeDAO;
 import fideco.notice.dto.NoticeDTO;
 
@@ -15,7 +15,7 @@ public class NoticeUpdateViewController implements Controller {
 	private static Log log = LogFactory.getLog(NoticeUpdateViewController.class);
 
 	@Override
-	public FidecoHandlerAdapter execute(HttpServletRequest request, HttpServletResponse response) {
+	public HandlerAdapter execute(HttpServletRequest request, HttpServletResponse response) {
 		log.info("-33-");
 		int notice_num = Integer.parseInt(request.getParameter("notice_num"));
 		log.info("notice_num : " + notice_num);
@@ -39,9 +39,9 @@ public class NoticeUpdateViewController implements Controller {
 		log.info(noticeDTO);
 
 		request.setAttribute("noticeDTO", noticeDTO);
-		FidecoHandlerAdapter fidecoHandlerAdapter = new FidecoHandlerAdapter();
-		fidecoHandlerAdapter.setPath("/WEB-INF/view/notice/notice_update_view.jsp");
-		return fidecoHandlerAdapter;
+		HandlerAdapter HandlerAdapter = new HandlerAdapter();
+		HandlerAdapter.setPath("/WEB-INF/view/notice/notice_update_view.jsp");
+		return HandlerAdapter;
 	}
 
 }
