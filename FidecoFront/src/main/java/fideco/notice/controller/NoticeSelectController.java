@@ -4,6 +4,7 @@ import java.util.ArrayList;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
@@ -23,9 +24,17 @@ public class NoticeSelectController implements Controller {
 		log.info(noticeDTO);
 		ArrayList<NoticeDTO> arrayList = new ArrayList<NoticeDTO>();
 		
+		HttpSession session = request.getSession(false);
+        Integer lastVisitedNoticeNum = null;
+        if (session != null) {
+            lastVisitedNoticeNum = (Integer) session.getAttribute("last_visited_notice_num");
+        }
+		
 		arrayList = noticeDAO.noticeSelectAll();
 		log.info(arrayList);
 		request.setAttribute("arrayList", arrayList);
+		
+		
 		HandlerAdapter HandlerAdapter = new HandlerAdapter();
 		log.info("공지사항 조회");
 		

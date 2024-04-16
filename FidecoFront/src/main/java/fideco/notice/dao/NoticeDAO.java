@@ -157,7 +157,7 @@ public class NoticeDAO implements NoticeService {
 			Context context = new InitialContext();
 			DataSource dataSource = (DataSource) context.lookup("java:comp/env/jdbc");
 			connection = dataSource.getConnection();
-			String sql = "update notice set notice_title = ?, notice_content = ?, notice_writer = ?, notice_hit= ? ";
+			String sql = "update notice set notice_title = ?, notice_content = ?, notice_writer = ?, notice_hit =?";
 			sql += " where notice_num = ?";
 			log.info("update sql문 확인 = " + sql);
 

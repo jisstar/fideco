@@ -19,17 +19,17 @@
 			<th>조회수</th>
 		</tr>
 
-		<c:forEach var="arrayList" items="${arrayList}">
-			<tr>
-				<td>${arrayList.notice_num}</td>
-				<td><a href="./NoticeSelectDetail.nt?notice_num=${arrayList.notice_num}">${arrayList.notice_title}</a></td>
-				<td>${arrayList.notice_writer}</td>
-				<td>${arrayList.notice_registday}</td>
-				<td>${arrayList.notice_hit}</td>
-				
-			</tr>
-			
-		</c:forEach>
+		<c:set var="count" value="${arrayList.size()}" />
+        <c:forEach var="notice" items="${arrayList}">
+            <tr>
+                <td>${count}</td>
+                <td><a href="./NoticeSelectDetail.nt?notice_num=${notice.notice_num}">${notice.notice_title}</a></td>
+                <td>${notice.notice_writer}</td>
+                <td>${notice.notice_registday}</td>
+                <td>${notice.notice_hit}</td>
+            </tr>
+            <c:set var="count" value="${count - 1}" />
+        </c:forEach>
 
 		<c:if test="${empty arrayList}">
 			<tr>

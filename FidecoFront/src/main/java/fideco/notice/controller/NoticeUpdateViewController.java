@@ -25,6 +25,8 @@ public class NoticeUpdateViewController implements Controller {
 		log.info(notice_content);
 		String notice_writer = request.getParameter("notice_writer");
 		log.info(notice_writer);
+		int notice_hit = Integer.parseInt(request.getParameter("notice_hit"));
+		log.info("notice_hit : " + notice_hit);
 		
 
 		NoticeDAO noticeDAO = new NoticeDAO();
@@ -34,6 +36,8 @@ public class NoticeUpdateViewController implements Controller {
 		noticeDTO.setNotice_title(notice_title);
 		noticeDTO.setNotice_content(notice_content);
 		noticeDTO.setNotice_writer(notice_writer);
+//		noticeDTO.setNotice_hit(notice_hit);
+		
 
 		noticeDTO = noticeDAO.noticeUpdate(noticeDTO);
 		log.info(noticeDTO);

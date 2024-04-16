@@ -7,7 +7,7 @@
 <title>Insert title here</title>
 </head>
 <body>
-${noticeDTO.notice_num}번의 결제 정보가 삭제되었습니다.
+공지사항 정보가 삭제되었습니다.
 <button type="button" onclick="location.href='./NoticeSelectAll.nt'">공지사항 전체 조회</button>
 </body>
 </html>

@@ -22,6 +22,7 @@
 				</div>
 			</div>
 
+
 			<div class="form-group row">
 				<label for="notice_title" class="ml-sm-3 col-form-label">
 					공지사항 제목 </label>
@@ -50,7 +51,15 @@
 						value="${noticeDTO.notice_writer}">
 				</div>
 			</div>
-
+			
+			<div class="form-group row">
+				<div class="ml-sm-3">
+					<input type="hidden" name="notice_hit" id="notice_hit"
+						class="form-control form-control-sm"
+						value="${noticeDTO.notice_hit}">
+				</div>
+			</div>
+	
 
 			<div class="form-group">
 				<button type="submit" class="btn btn-secondary">수정</button>
