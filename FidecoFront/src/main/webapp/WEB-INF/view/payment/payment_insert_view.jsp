@@ -12,16 +12,16 @@
 <form action="./PaymentInsert.py" method="post">
     <table>
         <tr>
-            <td><label for="payment_id">결제 아이디 :</label></td>
+            <td><label for="payment_id">결제 아이디</label></td>
             <td><input type="text" id="payment_id" name="payment_id" required></td>
-            <td><label for="payment_amount">결제 금액 :</label></td>
+            <td><label for="payment_amount">결제 금액</label></td>
             <td><input type="text" id="payment_amount" name="payment_amount" required></td>
             <td><label for="payment_date">결제 일자 :</label></td>
             <td><input type="date" id="payment_date" name="payment_date" required></td>
         </tr>
         <tr>
             <td colspan="6">
-                <h7>결제 수단 선택 : </h7>
+                <h7>결제 수단 선택</h7>
                 <input type="radio" id="credit_pay" name="payment_method" value="카드 결제" checked>
                 <label for="credit_pay">카드 결제</label>
                 <input type="radio" id="phone_pay" name="payment_method" value="휴대폰 결제">

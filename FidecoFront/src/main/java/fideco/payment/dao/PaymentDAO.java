@@ -30,7 +30,8 @@ public class PaymentDAO implements PaymentService {
 			Context context = new InitialContext();
 			DataSource dataSource = (DataSource) context.lookup("java:comp/env/jdbc");
 			connection = dataSource.getConnection();
-			String sql = "select payment_id, payment_amount, payment_date, payment_method from payment";
+			String sql = "select payment_id, payment_amount, payment_date, payment_method from payment ";
+			sql += " order by payment_id desc ";
 			log.info("select sql문 확인 " + sql);
 			preparedStatement = connection.prepareStatement(sql);
 			resultSet = preparedStatement.executeQuery();
