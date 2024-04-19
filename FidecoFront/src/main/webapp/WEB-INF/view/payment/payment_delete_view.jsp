@@ -5,9 +5,13 @@
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
+<link rel="stylesheet" type="text/css" href="./css/su.css">
 </head>
 <body>
-${paymentDTO.payment_id}번의 결제 정보가 삭제되었습니다.
-<button type="button" onclick="location.href='./PaymentSelectAll.py'">결제정보 전체 조회</button>
+
+<script type="text/javascript">
+	 alert("${paymentDTO.payment_id}번의 결제정보가 삭제되었습니다.");
+	 location.href="./PaymentSelectAll.py";
+	</script>
 </body>
 </html>

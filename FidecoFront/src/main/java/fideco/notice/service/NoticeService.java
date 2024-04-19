@@ -21,4 +21,7 @@ public interface NoticeService {
 
 	// 데이터 삭제
 	public NoticeDTO noticeDelete(int notice_num);
+	
+	//조회수 증가
+	public NoticeDTO noticehitUpdate(int notice_hit);
 }

@@ -157,7 +157,7 @@ public class NoticeDAO implements NoticeService {
 			Context context = new InitialContext();
 			DataSource dataSource = (DataSource) context.lookup("java:comp/env/jdbc");
 			connection = dataSource.getConnection();
-			String sql = "update notice set notice_title = ?, notice_content = ?, notice_writer = ?, notice_hit =?";
+			String sql = "update notice set notice_title = ?, notice_content = ?, notice_writer = ? ";
 			sql += " where notice_num = ?";
 			log.info("update sql문 확인 = " + sql);
 
@@ -165,8 +165,8 @@ public class NoticeDAO implements NoticeService {
 			preparedStatement.setString(1, noticeDTO.getNotice_title());
 			preparedStatement.setString(2, noticeDTO.getNotice_content());
 			preparedStatement.setString(3, noticeDTO.getNotice_writer());
-			preparedStatement.setInt(4, noticeDTO.getNotice_hit());
-			preparedStatement.setInt(5, noticeDTO.getNotice_num());
+
+			preparedStatement.setInt(4, noticeDTO.getNotice_num());
 
 			int count = preparedStatement.executeUpdate();
 			log.info("count : "+count);
@@ -188,6 +188,43 @@ public class NoticeDAO implements NoticeService {
 			}
 		}
 		return noticeDTO;
+
+	}
+	
+	@Override
+	public NoticeDTO noticehitUpdate(int notice_num) {
+		Connection connection = null;
+		PreparedStatement preparedStatement = null;
+		try {
+			Context context = new InitialContext();
+			DataSource dataSource = (DataSource) context.lookup("java:comp/env/jdbc");
+			connection = dataSource.getConnection();
+			String sql = "UPDATE notice SET notice_hit = notice_hit + 1 WHERE notice_num = ? ";
+			log.info("update sql문 확인 = " + sql);
+
+			preparedStatement = connection.prepareStatement(sql);
+			preparedStatement.setInt(1, notice_num);
+			
+			int count = preparedStatement.executeUpdate();
+			log.info("count : "+count);
+			if (count > 0) {
+				connection.commit();
+				log.info("커밋되었습니다.");
+			} else {
+				connection.rollback();
+				log.info("롤백되었습니다.");
+			}
+		} catch (Exception e) {
+			log.info("공지사항 조회수 수정 실패 - " + e);
+		} finally {
+			try {
+				preparedStatement.close();
+				connection.close();
+			} catch (SQLException e) {
+				e.printStackTrace();
+			}
+		}
+		return null;
 
 	}
  

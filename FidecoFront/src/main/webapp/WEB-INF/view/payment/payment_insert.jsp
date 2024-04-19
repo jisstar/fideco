@@ -5,12 +5,12 @@
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
+<link rel="stylesheet" type="text/css" href="./css/su.css">
 </head>
 <body>
-	결제 정보 등록이 완료되었습니다.
-	<div class="col-md-4">
-		<a href="./PaymentSelectAll.py" class="btn btn-primary btn-block">
-			결제 정보 전체 조회 </a>
-	</div>
+	<script type="text/javascript">
+	 alert("결제 정보가 입력되었습니다.");
+	 location.href="./PaymentSelectAll.py";
+	</script>
 </body>
 </html>

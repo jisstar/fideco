@@ -5,6 +5,7 @@
 <head>
 <meta charset="UTF-8">
 <title>공지사항 삭제</title>
+<link rel="stylesheet" type="text/css" href="./css/su.css">
 </head>
 <body>
 	<h5>공지사항 삭제</h5>
@@ -28,16 +29,12 @@
 			</fieldset>
 		</form>
 		<div class="row">
-			<div class="col-md-4">
-				<a href="./NoticeSelectAll.nt" class="btn btn-primary btn-block">
-					공지사항 전체 조회 </a>
-			</div>
-			<div class="col-md-4">
-				<a href="./NoticeInsertView.nt" class="btn btn-success btn-block">
-					공지사항 입력 </a>
-			</div>
-			
-		</div>
+    <div class="col-md-4">
+        <button onclick="location.href='./NoticeSelectAll.nt'" class="btn">공지사항 전체 조회</button>
+    </div>
+    
+</div>
+		
 	</div>
 
 </body>

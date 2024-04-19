@@ -5,9 +5,12 @@
 <head>
 <meta charset="UTF-8">
 <title>공지사항 수정</title>
+<link rel="stylesheet" type="text/css" href="./css/su.css">
 </head>
 <body>
-공지사항 수정이 완료되었습니다.
-<button type="button" onclick="location.href='./NoticeSelectAll.nt'">공지사항 전체 조회</button>
+	<script type="text/javascript">
+		alert("공지사항이 수정되었습니다.");
+		location.href = "./NoticeSelectAll.nt";
+	</script>
 </body>
 </html>

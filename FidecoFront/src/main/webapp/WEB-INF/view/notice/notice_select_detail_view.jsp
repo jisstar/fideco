@@ -1,138 +1,86 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-	pageEncoding="UTF-8"%>
+    pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
 <head>
 <meta charset="UTF-8">
 <title>공지사항 상세 조회</title>
- <style>
-        body {
-            font-family: Arial, sans-serif;
-            background-color: #f5f5f5;
-            margin: 0;
-            padding: 20px;
-        }
+<link rel="stylesheet" type="text/css" href="./css/su.css">
+<style>
+    .card-body {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    }
 
-        h5 {
-            color: #333;
-            text-align: center;
-            margin-bottom: 24px;
-            font-size: 24px;
-        }
+    .table {
+        width: 80%;
+        border-collapse: collapse;
+        margin: 0 auto;
+        text-align: center;
+        border: 2px solid #ccc; /* 테이블 테두리 추가 */
+    }
 
-        .card-body {
-            background-color: #ffffff;
-            padding: 24px;
-            border-radius: 12px;
-            box-shadow: 0 4px 8px rgba(0,0,0,0.05);
-            max-width: 800px;
-            margin: auto;
-        }
+    .table th,
+    .table td {
+        border: 1px solid #ccc;
+        padding: 10px;
+    }
 
-        table {
-            width: 100%;
-            border-collapse: collapse;
-            margin-bottom: 20px;
-        }
+    .text-left {
+        text-align: left;
+    }
 
-        th, td {
-            padding: 12px;
-            border-bottom: 1px solid #ddd;
-            text-align: left;
-        }
+    .btn-group {
+        display: flex;
+        justify-content: center;
+    }
 
-        th {
-            background-color: #f2f2f2;
-            color: #333;
-        }
+    .btn {
+        margin: 5px;
+    }
 
-        tr:nth-child(even) {
-            background-color: #f9f9f9;
-        }
+    .info {
+        font-size: 14px;
+        text-align: left;
+        margin-top: 20px;
+    }
 
-        .btn {
-            display: inline-block;
-            padding: 10px 20px;
-            background-color: #007bff;
-            color: #fff;
-            border: none;
-            border-radius: 4px;
-            cursor: pointer;
-            text-decoration: none;
-            transition: background-color 0.3s;
-        }
-
-        .btn:hover {
-            background-color: #0056b3;
-        }
-
-        .btn-primary {
-            background-color: #007bff;
-        }
-
-        .btn-warning {
-            background-color: #ffc107;
-        }
-
-        .btn-danger {
-            background-color: #dc3545;
-        }
-
-        .btn-block {
-            width: 100%;
-        }
-
-        .row {
-            display: flex;
-            justify-content: space-between;
-            margin-top: 20px;
-        }
-
-        .col-md-4 {
-            flex-basis: calc(33.333% - 20px);
-            max-width: calc(33.333% - 20px);
-        }
-    </style>
+    /* 내용 부분의 높이 조정 */
+    .content {
+        height: 300px; /* 높이 조정 */
+        overflow-y: auto; /* 내용이 넘칠 경우 스크롤 표시 */
+    }
+</style>
 </head>
 <body>
-	<h5>공지사항 상세 조회</h5>
-	<div class="card-body">
-		<table class="table table-hover">
-			<thead class="thead-light">
-				<tr class="text-center">
-					<th>NO.</th>
-					<th>제목</th>
-					<th>내용</th>
-					<th>작성자</th>
-					<th>등록일</th>
-					<th>조회수</th>
-				</tr>
-			</thead>
-			<tbody>
-				<tr class="text-center">
-					<td>${noticeDTO.notice_num}</td>
-					<td>${noticeDTO.notice_title}</td>
-					<td>${noticeDTO.notice_content}</td>
-					<td>${noticeDTO.notice_writer}</td>
-					<td>${noticeDTO.notice_registday}</td>
-					<td>${noticeDTO.notice_hit}</td>
-				</tr>
-			</tbody>
-		</table>
-		<div class="row">
-			<div class="col-md-4">
-				<a href="./NoticeSelectAll.nt" class="btn btn-primary btn-block"> 공지사항 전체 조회 </a>
-			</div>
-			<div class="col-md-4">
-				<a href="./NoticeUpdate.nt?notice_num=${noticeDTO.notice_num}"
-					class="btn btn-warning btn-block"> 공지사항 수정 </a>
-			</div>
-			<div class="col-md-4">
-				<a href="./NoticeDeleteView.nt?notice_num=${noticeDTO.notice_num}"
-					class="btn btn-danger btn-block"> 공지사항 삭제 </a>
-			</div>
-		</div>
-
-	</div>
+    <h5>공지사항 상세 조회</h5>
+    <div class="card-body">
+        <table class="table table-hover">
+            <tbody>
+                <tr>
+                    <th class="text-left">제목</th>
+                    <td colspan="5" class="text-left">${noticeDTO.notice_title}</td>
+                </tr>
+                <tr>
+                    <th class="text-left">작성자</th>
+                    <td class="text-left">${noticeDTO.notice_writer}</td>
+                    <th class="text-left">등록일</th>
+                    <td class="text-left">${noticeDTO.notice_registday}</td>
+                    <th class="text-left">조회수</th>
+                    <td class="text-left">${noticeDTO.notice_hit}</td>
+                </tr>
+                <tr>
+                    <th class="text-left">내용</th>
+                    <td class="text-left content" colspan="6">${noticeDTO.notice_content}</td>
+                </tr>
+            </tbody>
+        </table>
+        <div class="btn-group">
+            <button onclick="location.href='./NoticeSelectAll.nt'" class="btn">공지사항 전체 조회</button>
+            <button onclick="location.href='./NoticeUpdate.nt?notice_num=${noticeDTO.notice_num}'" class="btn">공지사항 수정</button>
+            <button onclick="location.href='./NoticeDeleteView.nt?notice_num=${noticeDTO.notice_num}'" class="btn">공지사항 삭제</button>
+        </div>
+    </div>
 </body>
 </html>
