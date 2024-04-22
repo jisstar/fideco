@@ -7,7 +7,6 @@
 <title>Insert title here</title>
 </head>
 <body>
-<a href="../NoticeSelect.do">공지사항 리스트</a>
-<a href="../PaymentSelect.do">결제 리스트</a>
+야
 </body>
 </html>

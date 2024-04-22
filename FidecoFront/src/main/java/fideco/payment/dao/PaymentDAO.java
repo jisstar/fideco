@@ -38,14 +38,14 @@ public class PaymentDAO implements PaymentService {
 			while (resultSet.next()) {
 				PaymentDTO paymentDTO = new PaymentDTO();
 				paymentDTO.setPayment_id(resultSet.getString("payment_id"));
-				log.info("1번째 로그 " + paymentDTO);
+//				log.info("1번째 로그 " + paymentDTO);
 				paymentDTO.setPayment_amount(resultSet.getInt("payment_amount"));
-				log.info("2번째 로그 " + paymentDTO);
+//				log.info("2번째 로그 " + paymentDTO);
 				paymentDTO.setPayment_date(resultSet.getString("payment_date"));
-				log.info("3번째 로그 " + paymentDTO);
+//				log.info("3번째 로그 " + paymentDTO);
 				paymentDTO.setPayment_method(resultSet.getString("payment_method"));
 				arrayList.add(paymentDTO);
-				log.info("arraylist :  " + arrayList);
+//				log.info("arraylist :  " + arrayList);
 			}
 			resultSet.getRow();
 			if (resultSet.getRow() == 0) {
@@ -113,7 +113,7 @@ public class PaymentDAO implements PaymentService {
 			connection = dataSource.getConnection();
 			String sql = "insert into payment(payment_id, payment_amount, payment_date, payment_method)";
 			sql += " values (?,?,?,?)";
-			log.info("sql 확인 : " + sql);
+			log.info("INSERT SQL 확인 : " + sql);
 			preparedStatement = connection.prepareStatement(sql);
 			preparedStatement.setString(1, paymentDTO.getPayment_id());
 			preparedStatement.setInt(2, paymentDTO.getPayment_amount());

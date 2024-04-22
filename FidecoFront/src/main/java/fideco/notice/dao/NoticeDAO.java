@@ -38,19 +38,19 @@ public class NoticeDAO implements NoticeService {
 			while (resultSet.next()) {
 				NoticeDTO noticeDTO = new NoticeDTO();
 				noticeDTO.setNotice_num(resultSet.getInt("notice_num"));
-				log.info("1번째 로그 " + noticeDTO);
+//				log.info("1번째 로그 " + noticeDTO);
 				noticeDTO.setNotice_title(resultSet.getString("notice_title"));
-				log.info("2번째 로그 " + noticeDTO);
+//				log.info("2번째 로그 " + noticeDTO);
 				noticeDTO.setNotice_content(resultSet.getString("notice_content"));
-				log.info("3번째 로그 " + noticeDTO);
+//				log.info("3번째 로그 " + noticeDTO);
 				noticeDTO.setNotice_writer(resultSet.getString("notice_writer"));
-				log.info("4번째 로그 " +noticeDTO);
+//				log.info("4번째 로그 " +noticeDTO);
 				noticeDTO.setNotice_registday(resultSet.getString("notice_registday"));
-				log.info("5번째 로그 " +noticeDTO);
+//				log.info("5번째 로그 " +noticeDTO);
 				noticeDTO.setNotice_hit(resultSet.getInt("notice_hit"));
-				log.info("6번째 로그 " +noticeDTO);
+//				log.info("6번째 로그 " +noticeDTO);
 				arrayList.add(noticeDTO);
-				log.info("arraylist :  " + arrayList);
+//				log.info("arraylist :  " + arrayList);
 			}
 			resultSet.getRow();
 			if (resultSet.getRow() == 0) {
@@ -121,7 +121,7 @@ public class NoticeDAO implements NoticeService {
 			connection = dataSource.getConnection();
 			String sql = "insert into notice (notice_num, notice_title, notice_content, notice_writer, notice_registday, notice_hit)";
 			sql += " values (notice_seq.nextval,?,?,?,sysdate,?)";
-			log.info("sql 확인 : " + sql);
+			log.info("INSERT SQL 확인 : " + sql);
 			preparedStatement = connection.prepareStatement(sql);
 			preparedStatement.setString(1, noticeDTO.getNotice_title());
 			preparedStatement.setString(2, noticeDTO.getNotice_content());
